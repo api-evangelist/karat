@@ -1,0 +1,23 @@
+generated: '2026-07-19'
+method: searched
+source: https://github.com/karat/api-docs (Postman collection) + https://github.com/karat/api-sdk (KaratClient transport)
+docs: https://karat.slab.com/posts/karat-api-documentation-dezzam7y
+summary:
+  types: [http]
+  http_schemes: [bearer]
+  api_key_in: []
+  oauth2_flows: []
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: >-
+    All Karat GraphQL API requests authenticate with a per-tenant API token supplied in
+    the HTTP Authorization header as `Authorization: Bearer <token>`. Requests are scoped
+    to the customer's own subdomain/environment. Tokens are issued per customer account.
+  location: header
+  header: Authorization
+  format: 'Bearer <token>'
+  sources:
+  - graphql/karat-operations.graphql
+  - https://github.com/karat/api-sdk/blob/main/src/karatclient/karatclient.py
