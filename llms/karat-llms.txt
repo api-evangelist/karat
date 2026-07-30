@@ -1,0 +1,36 @@
+# Karat
+
+> Karat Inc. is a Seattle-based technical interviewing platform that conducts standardized software engineering interviews for enterprise hiring teams through a community of trained Interview Engineers. Karat exposes a GraphQL API for managing technical-interview hiring workflows, authenticated with a per-tenant Bearer token and served on customer subdomains. Karat is SOC 2 Type II certified and certified under the EU-US/UK-US/Swiss-US Data Privacy Frameworks.
+
+## API
+- [Karat GraphQL API endpoint](https://{subdomain}.karat.io/api/v1/graphql): POST GraphQL, Authorization: Bearer <token>
+- [API Overview](https://karat.slab.com/posts/karat-api-overview-6l4gprc3)
+- [API Documentation](https://karat.slab.com/posts/karat-api-documentation-dezzam7y)
+
+## Operations
+- Queries: candidacies, roles, groups, users, me (Relay cursor pagination: first/last/before/after)
+- Mutations: createInvitation (invite a candidate), bulkUpdateCandidacyStatus (disposition candidacies)
+
+## Specs & artifacts
+- [GraphQL operations](graphql/karat-operations.graphql)
+- [Authentication](authentication/karat-authentication.yml)
+- [Conventions](conventions/karat-conventions.yml)
+- [Data model](data-model/karat-data-model.yml)
+- [Sandbox / environments](sandbox/karat-sandbox.yml)
+- [Conformance](conformance/karat-conformance.yml)
+- [Lifecycle](lifecycle/karat-lifecycle.yml)
+- [MCP (candidate)](mcp/karat-mcp.yml)
+- [Agent skills](skills/_index.yml)
+
+## Tooling
+- [Example Python SDK](https://github.com/karat/api-sdk)
+- [Postman collection](https://github.com/karat/api-docs/tree/main/Postman)
+- [GitHub organization](https://github.com/karat)
+
+## Company
+- [Website](https://karat.com)
+- [Blog](https://karat.com/blog/)
+- [Contact / Support](https://karat.com/contact-us/)
+- [Customer FAQ (security & compliance)](https://karat.com/customer-faq/)
+- [Terms of Service](https://karat.com/terms-of-service/)
+- [Privacy](https://karat.com/privacy/)

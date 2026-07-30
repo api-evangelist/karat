@@ -1,0 +1,24 @@
+generated: '2026-07-19'
+method: searched
+source: https://github.com/karat/api-sdk
+notes: >-
+  Karat publishes an example first-party Python SDK for its GraphQL API on GitHub. It is
+  distributed as source (example/starter code, MIT licensed) rather than as a published
+  registry package. No npm, PyPI, Maven, NuGet, Go, RubyGems, Packagist, or crates.io
+  package was found for Karat. The SDK wraps the Python `gql` GraphQL client.
+packages:
+- language: python
+  registry: github
+  name: karat/api-sdk
+  url: https://github.com/karat/api-sdk
+  install: git clone https://github.com/karat/api-sdk && pip install -r requirements.txt
+  official: true
+  published_to_registry: false
+  license: MIT
+  depends_on:
+  - gql==3.2.0
+  - requests==2.27.1
+  - requests-toolbelt==0.9.1
+  description: >-
+    Example Python SDK (KaratClient) for the Karat GraphQL API using the gql library;
+    exposes users/groups/roles queries and invite/disposition mutations.

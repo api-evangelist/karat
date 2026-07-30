@@ -1,0 +1,31 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  https://github.com/karat/api-sdk (KaratClient envs map + README) +
+  graphql/karat-operations.graphql
+notes: >-
+  Karat's example SDK selects the API host from an ENVIRONMENT variable, giving a
+  test environment distinct from production. There are no published test cards or magic
+  identifiers (Karat is not a payments API); test isolation is by environment + tenant
+  token. Roles and candidacies also expose a `demo` filter flag for demo data.
+environments:
+- name: production
+  url_template: https://{subdomain}.karat.io/api/v1/graphql
+  live: true
+- name: test
+  url_template: https://{subdomain}.cotrain.io/api/v1/graphql
+  live: false
+  description: Karat's non-production/test environment host (cotrain.io).
+- name: development
+  url_template: http://{subdomain}.localtest.me:3000/api/v1/graphql
+  live: false
+  description: Local development host mapping used by the example SDK.
+selection:
+  mechanism: ENVIRONMENT env var in the example SDK (production | test | development)
+  auth: per-tenant Bearer token + subdomain
+demo_data:
+  filters:
+  - entity: Role
+    arg: demo
+  - entity: Candidacy
+    arg: demo

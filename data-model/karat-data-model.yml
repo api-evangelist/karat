@@ -1,0 +1,69 @@
+generated: '2026-07-19'
+method: derived
+source: graphql/karat-operations.graphql
+notes: >-
+  Entity-relationship graph derived from the Karat GraphQL operation documents (node
+  shapes and nested selections in the published Postman collection and Python SDK).
+  Karat does not publish a GraphQL SDL, so relationships are inferred from returned
+  fields, not from an introspection schema.
+entities:
+- name: Group
+  description: A team/organization grouping that owns roles and users.
+  fields: [id, name]
+- name: Role
+  description: A hiring role/req that candidacies are opened against.
+  fields: [id, name]
+- name: User
+  description: A client-side user of the Karat platform (e.g. recruiter/admin).
+  fields: [id, name, email, phone, timeZone, clientUserType, lastSeen]
+- name: Candidacy
+  description: A candidate's progression through interviews for a role.
+  fields: [id, status, atsUrl, atsCandidateId, atsApplicationId, lastStatusUpdate]
+- name: Candidate
+  description: The person being interviewed.
+  fields: [id, name, email, safeResumeUrl]
+- name: CodeChallenge
+  description: An asynchronous coding challenge attached to a candidacy.
+  fields: [id, createdAt, state, endTime, recommendation]
+- name: Interview
+  description: A live technical interview attached to a candidacy.
+  fields: [id, createdAt, state, endTime, recommendation, isRedo, shippedTime]
+- name: InterviewResult
+  description: The result/writeup produced by an interview.
+  fields: [id, overallThoughts, updatedAt, createdAt]
+- name: Assessment
+  description: Created when a candidate is invited (createInvitation payload).
+  fields: [id]
+relationships:
+- from: Role
+  to: Group
+  kind: belongs_to
+  via: group
+- from: User
+  to: Group
+  kind: has_many
+  via: groups
+- from: Candidacy
+  to: Role
+  kind: belongs_to
+  via: role
+- from: Candidacy
+  to: Candidate
+  kind: has_one
+  via: candidate
+- from: Candidacy
+  to: User
+  kind: has_one
+  via: recruiter
+- from: Candidacy
+  to: CodeChallenge
+  kind: has_many
+  via: codeChallenges
+- from: Candidacy
+  to: Interview
+  kind: has_many
+  via: interviews
+- from: Interview
+  to: InterviewResult
+  kind: has_one
+  via: result

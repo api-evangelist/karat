@@ -1,0 +1,86 @@
+# Karat GraphQL API — operation documents
+# generated: '2026-07-19'
+# method: searched
+# source: https://github.com/karat/api-docs (Postman collection) + https://github.com/karat/api-sdk
+# endpoint: https://{subdomain}.karat.io/api/v1/graphql  (POST, Authorization: Bearer <token>)
+# NOTE: These are the verbatim operation documents Karat publishes in its Postman
+# collection and example Python SDK. Karat does not publish a GraphQL SDL/introspection
+# schema publicly (introspection requires an authenticated tenant token).
+
+# ---- Queries ----
+
+query CandidacyStatuses($orderBy: [CandidacyOrderBy!], $filter: CandidacyFilter, $search: String, $first: Int, $last: Int, $before: String, $after: String) {
+  candidacies(orderBy: $orderBy, filter: $filter, search: $search, first: $first, last: $last, before: $before, after: $after) {
+    totalCount
+    pageInfo { endCursor hasNextPage }
+    nodes {
+      id
+      status
+      atsUrl
+      atsCandidateId
+      atsApplicationId
+      lastStatusUpdate
+      candidate { id name email safeResumeUrl }
+      recruiter { id name email }
+      role { id name group { id name } }
+      codeChallenges { nodes { id createdAt state endTime recommendation } }
+      interviews {
+        nodes {
+          id createdAt state endTime recommendation isRedo shippedTime
+          result { id overallThoughts updatedAt createdAt }
+        }
+      }
+    }
+  }
+}
+
+query Roles($filter: RoleFilter, $orderBy: RoleOrderBy, $search: String, $first: Int, $last: Int, $before: String, $after: String) {
+  roles(filter: $filter, orderBy: $orderBy, search: $search, first: $first, last: $last, before: $before, after: $after) {
+    totalCount
+    pageInfo { endCursor hasNextPage }
+    nodes { id name group { id name } }
+  }
+}
+
+query Groups($filter: GroupFilter, $search: String, $first: Int, $last: Int, $before: String, $after: String) {
+  groups(filter: $filter, search: $search, first: $first, last: $last, before: $before, after: $after) {
+    totalCount
+    pageInfo { endCursor hasNextPage }
+    nodes { id name }
+  }
+}
+
+query Users($filter: UserFilter, $orderBy: [UserOrderBy!], $search: String, $first: Int, $last: Int, $before: String, $after: String) {
+  users(filter: $filter, orderBy: $orderBy, search: $search, first: $first, last: $last, before: $before, after: $after) {
+    totalCount
+    pageInfo { endCursor hasNextPage }
+    nodes {
+      id name email phone timeZone clientUserType lastSeen
+      groups { nodes { id name } }
+    }
+  }
+}
+
+query Me {
+  me { name }
+}
+
+# ---- Mutations ----
+
+mutation CreateInvitation($name: String!, $email: String!, $roleId: ID!, $phone: String, $atsUrl: String, $resume: String, $githubUrl: String, $linkedinUrl: String) {
+  createInvitation(input: {
+    name: $name, email: $email, roleId: $roleId, phone: $phone,
+    atsUrl: $atsUrl, resume: $resume, githubUrl: $githubUrl, linkedinUrl: $linkedinUrl
+  }) {
+    assessment { id }
+    errors { message }
+  }
+}
+
+mutation BulkUpdateCandidacyStatus($updates: [CandidacyStatusWithCandidacies!]!) {
+  bulkUpdateCandidacyStatus(input: { updates: $updates }) {
+    successfulUpdates
+    failedUpdates
+    errors { message }
+  }
+}

@@ -1,0 +1,50 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  graphql/karat-operations.graphql (Postman collection + Python SDK) +
+  https://karat.slab.com/posts/karat-api-documentation-dezzam7y
+api_style: graphql
+endpoint: https://{subdomain}.karat.io/api/v1/graphql
+transport:
+  method: POST
+  content_type: application/json
+authentication:
+  style: bearer-token
+  header: Authorization
+  ref: authentication/karat-authentication.yml
+versioning:
+  scheme: uri-path
+  current: v1
+  path: /api/v1/graphql
+pagination:
+  style: relay-cursor-connection
+  request_params: [first, last, before, after]
+  response_fields: [totalCount, pageInfo.endCursor, pageInfo.hasNextPage, nodes]
+  notes: >-
+    List queries (candidacies, roles, groups, users) are Relay-style GraphQL connections.
+    Page forward with first + after (endCursor); page backward with last + before.
+filtering:
+  style: typed-filter-and-search
+  params: [filter, orderBy, search]
+  notes: >-
+    Each connection accepts a typed *Filter input (e.g. CandidacyFilter, RoleFilter,
+    UserFilter), an orderBy enum, and a free-text search string.
+idempotency:
+  supported: false
+  notes: >-
+    No idempotency-key mechanism is documented. Mutations (createInvitation,
+    bulkUpdateCandidacyStatus) are not declared idempotent.
+error_envelope:
+  style: graphql
+  notes: >-
+    Two layers: (1) standard GraphQL top-level `errors[]` for query/transport errors;
+    (2) domain errors returned in the mutation payload as `errors { message }`
+    (createInvitation) or `errors { message }` alongside successfulUpdates/failedUpdates
+    (bulkUpdateCandidacyStatus). No RFC 9457 problem+json.
+  ref: graphql/karat-operations.graphql
+rate_limiting:
+  documented: false
+cross_links:
+  authentication: authentication/karat-authentication.yml
+  data_model: data-model/karat-data-model.yml
+  lifecycle: lifecycle/karat-lifecycle.yml

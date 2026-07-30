@@ -1,0 +1,35 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  graphql/karat-operations.graphql + https://github.com/karat/api-sdk +
+  https://karat.com/customer-faq/
+standards:
+- id: graphql
+  conforms: true
+  evidence: >-
+    Single GraphQL endpoint at /api/v1/graphql accepting POST query/mutation documents;
+    example SDK uses the gql client with introspection (fetch_schema_from_transport).
+- id: relay-cursor-connections
+  conforms: true
+  evidence: >-
+    List fields (candidacies, roles, groups, users) implement the Relay Connections spec
+    (first/last/before/after args; totalCount + pageInfo{endCursor,hasNextPage}; nodes).
+- id: oauth2
+  conforms: false
+  evidence: Authentication is a static per-tenant Bearer token, not an OAuth 2.0 flow.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use the GraphQL error model, not application/problem+json.
+- id: soc2-type-ii
+  conforms: true
+  evidence: >-
+    Karat states SOC 2 Type II certification covering Security, Availability, Integrity,
+    Confidentiality, and Privacy (karat.com/customer-faq).
+- id: eu-us-data-privacy-framework
+  conforms: true
+  evidence: >-
+    Certified under the EU-US, UK-US and Swiss-US Data Privacy Frameworks
+    (karat.com/customer-faq).
+- id: gdpr
+  conforms: true
+  evidence: GDPR (EU/UK/Swiss) compliance stated in customer FAQ; DPA published.

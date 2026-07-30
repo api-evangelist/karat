@@ -1,0 +1,12 @@
+generated: '2026-07-19'
+method: generated
+source: graphql/karat-operations.graphql + conventions/karat-conventions.yml
+skills:
+- file: karat-invite-candidate.md
+  name: Invite a candidate into a Karat assessment
+  api: graphql/karat-operations.graphql
+  operations: [roles, createInvitation]
+- file: karat-sync-candidacy-statuses.md
+  name: Sync and disposition candidacy statuses
+  api: graphql/karat-operations.graphql
+  operations: [candidacies, bulkUpdateCandidacyStatus]

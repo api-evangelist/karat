@@ -1,0 +1,35 @@
+generated: '2026-07-19'
+method: derived
+status: candidate
+source: graphql/karat-operations.graphql
+notes: >-
+  No official hosted/remote Karat MCP server was found (no entry in MCP registries or
+  the karat GitHub org). This is a candidate tool list derived one-to-one from Karat's
+  published GraphQL operations, to seed an MCP server. Auth would map to the tenant
+  Bearer token + subdomain.
+server:
+  name: karat
+  transport: http
+  url: null
+tools:
+- name: list_candidacies
+  description: List candidacies with their status, code challenges and interviews (paged).
+  source_operation: graphql/karat-operations.graphql#candidacies
+- name: list_roles
+  description: List hiring roles and their owning group.
+  source_operation: graphql/karat-operations.graphql#roles
+- name: list_groups
+  description: List groups.
+  source_operation: graphql/karat-operations.graphql#groups
+- name: list_users
+  description: List client users with their groups.
+  source_operation: graphql/karat-operations.graphql#users
+- name: whoami
+  description: Return the authenticated actor.
+  source_operation: graphql/karat-operations.graphql#me
+- name: create_invitation
+  description: Invite a candidate into an assessment for a role.
+  source_operation: graphql/karat-operations.graphql#createInvitation
+- name: bulk_update_candidacy_status
+  description: Bulk-update the disposition/status of one or more candidacies.
+  source_operation: graphql/karat-operations.graphql#bulkUpdateCandidacyStatus
