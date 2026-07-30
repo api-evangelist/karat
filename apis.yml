@@ -1,23 +1,66 @@
 aid: karat
 name: Karat
-description: 'Karat is a company surfaced as a portfolio company of norwest-venture-partners, union-square-ventures
-  and added to the API Evangelist network as a stub for enrichment. Sector: unknown. This profile is a
-  lead awaiting the enrichment pipeline.'
+description: 'Karat Inc. is a Seattle-based technical interviewing platform that conducts
+  standardized software engineering interviews for enterprise hiring teams through its
+  community of trained Interview Engineers. Karat exposes a GraphQL API, hosted per-customer
+  at https://{subdomain}.karat.io/api/v1/graphql, that lets talent and ATS systems
+  programmatically manage roles and groups, look up users, invite candidates into
+  assessments, retrieve candidacy statuses, code-challenge and interview results, and
+  bulk-update candidacy dispositions. The API uses Bearer token authentication, Relay-style
+  cursor pagination, and ships an example Python SDK and a Postman collection. Karat is
+  SOC 2 Type II certified and certified under the EU-US, UK-US and Swiss-US Data Privacy
+  Frameworks.'
 url: https://raw.githubusercontent.com/api-evangelist/karat/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - norwest-venture-partners
 - union-square-ventures
-x-tier: stub
+x-tier: enriched
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://karat.com/wp-content/themes/karat/assets/img/png/logo.png
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
-- Unknown
-apis: []
+- Technical Interviewing
+- Hiring
+- Recruiting
+- Talent Assessment
+- Engineering
+- GraphQL
+- API
+apis:
+- name: Karat GraphQL API
+  description: 'Karat''s GraphQL API for managing technical-interview hiring workflows:
+    query candidacies, roles, groups and users; invite candidates into assessments;
+    and bulk-update candidacy dispositions. Hosted per-customer on a tenant subdomain.'
+  humanURL: https://karat.slab.com/posts/karat-api-documentation-dezzam7y
+  baseURL: https://{subdomain}.karat.io/api/v1/graphql
+  tags:
+  - GraphQL
+  - Hiring
+  - Interviewing
+  properties:
+  - type: Documentation
+    url: https://karat.slab.com/posts/karat-api-documentation-dezzam7y
+  - type: APIReference
+    url: https://karat.slab.com/posts/karat-api-overview-6l4gprc3
+  - type: GraphQL
+    url: https://github.com/karat/api-docs
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -25,4 +68,61 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: https://karat.io
+  url: https://karat.com
+- type: Documentation
+  url: https://karat.slab.com/posts/karat-api-documentation-dezzam7y
+- type: APIReference
+  url: https://karat.slab.com/posts/karat-api-overview-6l4gprc3
+- type: GettingStarted
+  url: https://github.com/karat/api-sdk#installation
+- type: GraphQL
+  url: https://github.com/karat/api-docs
+- type: Postman
+  url: https://github.com/karat/api-docs/tree/main/Postman
+- type: GitHubOrganization
+  url: https://github.com/karat
+- type: Blog
+  url: https://karat.com/blog/
+- type: Support
+  url: https://karat.com/contact-us/
+- type: TermsOfService
+  url: https://karat.com/terms-of-service/
+- type: PrivacyPolicy
+  url: https://karat.com/privacy/
+- type: Compliance
+  url: https://karat.com/customer-faq/
+- type: SDKs
+  url: packages/karat-packages.yml
+- type: Packages
+  url: packages/karat-packages.yml
+- type: Authentication
+  url: authentication/karat-authentication.yml
+- type: Conventions
+  url: conventions/karat-conventions.yml
+- type: DataModel
+  url: data-model/karat-data-model.yml
+- type: Conformance
+  url: conformance/karat-conformance.yml
+- type: Lifecycle
+  url: lifecycle/karat-lifecycle.yml
+- type: Sandbox
+  url: sandbox/karat-sandbox.yml
+- type: WellKnown
+  url: well-known/karat-well-known.yml
+- type: TrustCenter
+  url: security/karat-trust-center.yml
+- type: DomainSecurity
+  url: security/karat-domain-security.yml
+- type: MCPServer
+  url: mcp/karat-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/karat-llms.txt
+- type: GraphQLOperations
+  url: graphql/karat-operations.graphql
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
