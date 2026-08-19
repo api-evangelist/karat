@@ -2,11 +2,9 @@ generated: '2026-07-19'
 method: derived
 status: candidate
 source: graphql/karat-operations.graphql
-notes: >-
-  No official hosted/remote Karat MCP server was found (no entry in MCP registries or
-  the karat GitHub org). This is a candidate tool list derived one-to-one from Karat's
-  published GraphQL operations, to seed an MCP server. Auth would map to the tenant
-  Bearer token + subdomain.
+notes: No official hosted/remote Karat MCP server was found (no entry in MCP registries or the karat GitHub
+  org). This is a candidate tool list derived one-to-one from Karat's published GraphQL operations, to
+  seed an MCP server. Auth would map to the tenant Bearer token + subdomain.
 server:
   name: karat
   transport: http
@@ -33,3 +31,9 @@ tools:
 - name: bulk_update_candidacy_status
   description: Bulk-update the disposition/status of one or more candidacies.
   source_operation: graphql/karat-operations.graphql#bulkUpdateCandidacyStatus
+deployment:
+  mode: none
+  verified: derived
+  tools: 7
+  checked: '2026-08-12'
+  source: catalog MCP census
