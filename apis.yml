@@ -42,6 +42,14 @@ tags:
 - Talent Assessment
 - Engineering
 - GraphQL
+tags_raw:
+- Company
+- Technical Interviewing
+- Hiring
+- Recruiting
+- Talent Assessment
+- Engineering
+- GraphQL
 - API
 apis:
 - name: Karat GraphQL API
