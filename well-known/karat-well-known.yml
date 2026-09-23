@@ -1,21 +1,24 @@
 generated: '2026-07-19'
 method: searched
 host: https://karat.com
-notes: >-
-  Probed the corporate host karat.com. No /.well-known discovery documents are published.
-  The API itself is served per-customer on tenant subdomains ({subdomain}.karat.io) which
-  require an authenticated tenant context and were not probed. Absence of these documents
-  is a valid, expected result.
-documents:
-- path: /.well-known/security.txt
-  status: 404
-- path: /security.txt
-  status: 404
-- path: /.well-known/openid-configuration
-  status: 404
-- path: /.well-known/oauth-authorization-server
-  status: 404
-- path: /.well-known/api-catalog
-  status: 404
-- path: /.well-known/ai-plugin.json
-  status: 404
+notes: Probed the corporate host karat.com. No /.well-known discovery documents are published. The API
+  itself is served per-customer on tenant subdomains ({subdomain}.karat.io) which require an authenticated
+  tenant context and were not probed. Absence of these documents is a valid, expected result.
+hosts:
+- host: https://karat.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+x-shape-fix:
+  converted: '2026-08-20'
+  from: documents
+  note: Rewritten into hosts[] -> documents[], the only shape well_known_docs() in score.rb reads. A served
+    .well-known surface recorded in any other shape scores as absent.
