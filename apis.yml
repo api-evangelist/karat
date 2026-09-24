@@ -141,8 +141,6 @@ common:
   url: skills/_index.yml
 - type: LLMsTxt
   url: llms/karat-llms.txt
-- type: GraphQLOperations
-  url: graphql/karat-operations.graphql
 x-enrichment:
   date: '2026-07-19'
   status: backfilled
