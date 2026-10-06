@@ -46,7 +46,7 @@ accessModel:
 image: https://karat.com/wp-content/themes/karat/assets/img/png/logo.png
 specificationVersion: '0.23'
 created: '2026-07-17'
-modified: '2026-07-19'
+modified: '2026-10-06'
 tags:
 - Company
 - Technical Interviewing
@@ -88,6 +88,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- url: https://karat.com/feed/
+  type: BlogRSS
 - type: Website
   url: https://karat.com
 - type: Documentation
